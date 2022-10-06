@@ -1,4 +1,4 @@
-module alfonzso/docker-compose-linter
+module github.com/alfonzso/docker-compose-linter
 
 go 1.18
 
