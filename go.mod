@@ -1,4 +1,4 @@
-module alfonzso/docker-stack-compose-validator
+module alfonzso/docker-compose-linter
 
 go 1.18
 
