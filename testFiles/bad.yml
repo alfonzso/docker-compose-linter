@@ -1,0 +1,15 @@
+version: "3"
+services:
+  test-linter:
+    image: alpine
+    command: ["sh", "-c", " npm run start "]
+
+    deploy:
+      mode: replicated
+      replicas: 1
+      resources:
+          limits:
+              cpus: 1
+              memory: 2G
+          reservations:
+              memory: 256M

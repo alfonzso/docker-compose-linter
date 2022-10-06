@@ -37,7 +37,7 @@ func loadYAMLWithEnv(yaml string, env map[string]string) (*composeType.Config, e
 	return loader.Load(buildConfigDetails(dict, env))
 }
 
-func Parser(yaml string, verbose bool) int {
+func Run(yaml string, verbose bool) int {
 	dict, parseErr := loadYAML(yaml)
 
 	b, err := json.Marshal(dict)

@@ -4,6 +4,8 @@ go 1.18
 
 require github.com/docker/cli v20.10.18+incompatible
 
+require github.com/google/go-cmp v0.5.9 // indirect
+
 require (
 	github.com/docker/docker v20.10.18+incompatible // indirect
 	github.com/docker/go-connections v0.4.0 // indirect
@@ -21,4 +23,5 @@ require (
 	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
 	golang.org/x/sys v0.0.0-20220715151400-c0bba94af5f8 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
+	gotest.tools/v3 v3.3.0
 )
