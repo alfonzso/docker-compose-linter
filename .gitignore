@@ -1,2 +1,4 @@
 vendor
 dc-linter
+
+dist/
