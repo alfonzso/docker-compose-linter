@@ -7,6 +7,7 @@ import (
 
 	"github.com/docker/cli/cli/compose/loader"
 	composeType "github.com/docker/cli/cli/compose/types"
+	log "github.com/sirupsen/logrus"
 )
 
 func buildConfigDetails(source map[string]interface{}, env map[string]string) composeType.ConfigDetails {
@@ -37,7 +38,7 @@ func loadYAMLWithEnv(yaml string, env map[string]string) (*composeType.Config, e
 	return loader.Load(buildConfigDetails(dict, env))
 }
 
-func Run(yaml string, verbose bool) int {
+func Run(yaml string) int {
 	dict, parseErr := loadYAML(yaml)
 
 	b, err := json.Marshal(dict)
@@ -45,14 +46,10 @@ func Run(yaml string, verbose bool) int {
 		return 1
 	}
 
-	if verbose {
-		fmt.Print("Yaml: ")
-		fmt.Println(string(b))
-	}
+	log.Debug("Yaml: ", string(b))
 
 	if parseErr != nil {
-		fmt.Print("Error: ")
-		fmt.Println(parseErr.Error())
+		fmt.Println("Error: ", parseErr.Error())
 		return 1
 	}
 

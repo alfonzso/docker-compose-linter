@@ -5,15 +5,24 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	log "github.com/sirupsen/logrus"
 )
 
 var AppDescription = "\nDocker Compose file linter: Validate your 'docker-compose.yml' file\n"
-var AppUsage = fmt.Sprintf("Usage: %s -f '<filename.xyz>' [ OPTIONS ] \n", strings.Replace(os.Args[0], "./", "", -1))
+var AppName = strings.Replace(os.Args[0], "./", "", -1)
+var AppUsage = fmt.Sprintf(
+`Usage:
+    %s -f '<filename.xyz>' [ OPTIONS ]
+    echo "lorem ipsum" | %s [ OPTIONS ]
+`, AppName, AppName,
+)
 
-func Flags() (string, bool) {
+func Parser() (filename string) {
 
-	filename := flag.String("f", "", "filename, e.x.: -f '<your-shine-compose-file>.yaml' \t [ manadotry ] ")
-	verbose := flag.Bool("v", false, "Verbose")
+	var verbose bool
+	flag.StringVar(&filename, "f", "", "fafa")
+	flag.BoolVar(&verbose, "v", false, "Verbose")
 
 	flag.Usage = func() {
 		fmt.Fprintf(flag.CommandLine.Output(), "\n%s %s\n", AppUsage, AppDescription)
@@ -23,5 +32,9 @@ func Flags() (string, bool) {
 
 	flag.Parse()
 
-	return *filename, *verbose
+	if verbose {
+		log.SetLevel(log.DebugLevel)
+	}
+
+	return filename
 }
