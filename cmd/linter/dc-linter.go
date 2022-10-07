@@ -5,16 +5,17 @@ import (
 	"os"
 
 	"github.com/alfonzso/docker-compose-linter/linter"
+	"github.com/alfonzso/docker-compose-linter/pkg/flags"
 )
 
 func main() {
 
-	filename, verbose := Flags()
+	filename, verbose := flags.Flags()
 
 	if filename == "" {
 		fmt.Println("[ ERROR ] Filename missing !")
 		fmt.Println()
-		fmt.Println(appUsage)
+		fmt.Println(flags.AppUsage)
 		os.Exit(1)
 	}
 

@@ -1,4 +1,4 @@
-package main
+package flags
 
 import (
 	"flag"
@@ -7,8 +7,8 @@ import (
 	"strings"
 )
 
-var appDescription = "\nDocker Compose file linter: Validate your 'docker-compose.yml' file\n"
-var appUsage = fmt.Sprintf("Usage: %s -f '<filename.xyz>' [ OPTIONS ] \n", strings.Replace(os.Args[0], "./", "", -1))
+var AppDescription = "\nDocker Compose file linter: Validate your 'docker-compose.yml' file\n"
+var AppUsage = fmt.Sprintf("Usage: %s -f '<filename.xyz>' [ OPTIONS ] \n", strings.Replace(os.Args[0], "./", "", -1))
 
 func Flags() (string, bool) {
 
@@ -16,7 +16,7 @@ func Flags() (string, bool) {
 	verbose := flag.Bool("v", false, "Verbose")
 
 	flag.Usage = func() {
-		fmt.Fprintf(flag.CommandLine.Output(), "\n%s %s\n", appUsage, appDescription)
+		fmt.Fprintf(flag.CommandLine.Output(), "\n%s %s\n", AppUsage, AppDescription)
 		fmt.Println("Options:")
 		flag.PrintDefaults()
 	}
